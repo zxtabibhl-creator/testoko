@@ -1,38 +1,111 @@
 <!DOCTYPE html>
-<html lang="id">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>W-GPT LOGIN | BIPZZ</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap" rel="stylesheet">
-    <style>
-        body { background: #000; color: #fff; font-family: 'Orbitron', sans-serif; }
-        .neon-box { border: 2px solid #f00; box-shadow: 0 0 20px #f00; }
-        input { background: #000 !important; border-bottom: 2px solid #333 !important; color: #f00 !important; text-align: center; letter-spacing: 5px; }
-        input:focus { border-color: #f00 !important; outline: none; }
-    </style>
-</head>
-<body class="h-screen flex items-center justify-center">
-    <div class="w-full max-w-sm p-10 neon-box rounded-3xl bg-zinc-950">
-        <h1 class="text-3xl text-red-600 mb-8 italic text-center">WORM GPT</h1>
-        <div class="space-y-6">
-            <input type="password" id="key" placeholder="ACCESS KEY" class="w-full p-3 text-xl">
-            <button onclick="auth()" class="w-full py-4 bg-red-700 hover:bg-red-600 text-white font-black italic rounded-xl transition">INITIALIZE ☠️</button>
-            <p id="err" class="text-[10px] text-zinc-700 text-center uppercase tracking-widest"></p>
-        </div>
-    </div>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login - JosukeAI</title>
 
-    <script>
-        function auth() {
-            const k = document.getElementById('key').value;
-            if(k === "WORM GPT") {
-                localStorage.setItem('w_auth', 'true');
-                window.location.href = "dashboard.html";
-            } else {
-                document.getElementById('err').innerText = "ACCESS DENIED";
-            }
-        }
-    </script>
+<style>
+body{
+background:linear-gradient(135deg,#000,#0a0f2c);
+color:white;
+font-family:Arial;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+margin:0;
+}
+.box{
+background:#0f1433;
+padding:40px;
+border-radius:15px;
+width:350px;
+box-shadow:0 0 30px rgba(0,150,255,0.4);
+}
+h2{color:#00aaff;text-align:center;}
+input{
+width:100%;
+padding:10px;
+margin:10px 0;
+border-radius:8px;
+border:none;
+background:#050816;
+color:white;
+}
+button{
+width:100%;
+padding:10px;
+margin-top:10px;
+border:none;
+border-radius:8px;
+background:linear-gradient(90deg,#007bff,#00aaff);
+color:white;
+cursor:pointer;
+}
+.google{
+background:white;
+color:black;
+}
+small{
+display:block;
+text-align:center;
+opacity:0.6;
+margin-top:15px;
+}
+</style>
+</head>
+<body>
+
+<div class="box">
+<h2>JosukeAI</h2>
+
+<input type="email" id="email" placeholder="Email">
+<input type="password" id="password" placeholder="Password">
+
+<button onclick="register()">Daftar</button>
+<button onclick="login()">Login</button>
+<button class="google" onclick="googleLogin()">Login Google</button>
+
+<small>Developed by @BIPZZATACKER</small>
+</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup }
+from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCzk8Oq_-BrQZvPIu1ryX1BVbTxDtENGPQ",
+  authDomain: "josukeai.firebaseapp.com",
+  projectId: "josukeai",
+  storageBucket: "josukeai.firebasestorage.app",
+  messagingSenderId: "726091351670",
+  appId: "1:726091351670:web:d7cd28953e2d8360c54157",
+  measurementId: "G-4253HTK4FB"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+};
+
+window.register = async ()=>{
+  await createUserWithEmailAndPassword(auth,email.value,password.value);
+  alert("Akun berhasil dibuat");
+}
+
+window.login = async ()=>{
+  await signInWithEmailAndPassword(auth,email.value,password.value);
+  window.location="dashboard.html";
+}
+
+window.googleLogin = async ()=>{
+  const provider = new GoogleAuthProvider();
+  await signInWithPopup(auth,provider);
+  window.location="dashboard.html";
+}
+</script>
+
 </body>
 </html>
