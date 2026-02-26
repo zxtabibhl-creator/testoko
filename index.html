@@ -3,136 +3,185 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BIPZZ OTP - HIGH-END SYSTEM</title>
+    <title>BIPZZ OTP - ABSOLUTE SYSTEM</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&display=swap" rel="stylesheet">
     <style>
-        body {
-            background-color: #000;
-            color: #fff;
-            font-family: 'Orbitron', sans-serif;
-            background-image: radial-gradient(circle at 50% 50%, #200000 0%, #000 100%);
-        }
-        .red-neon {
-            border: 2px solid #ff0000;
-            box-shadow: 0 0 20px #ff0000, inset 0 0 10px #ff0000;
-        }
-        .btn-red {
-            background: linear-gradient(90deg, #8b0000, #ff0000);
-            transition: 0.3s;
-            text-shadow: 0 0 5px #fff;
-        }
-        .btn-red:hover {
-            box-shadow: 0 0 30px #ff0000;
-            transform: scale(1.05);
-        }
-        .glass {
-            background: rgba(20, 20, 20, 0.8);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 0, 0, 0.2);
-        }
+        body { background: radial-gradient(circle at 50% 50%, #200000 0%, #000 100%); color: #fff; font-family: 'Orbitron', sans-serif; min-h-screen: 100vh; overflow-x: hidden; }
+        .red-neon { border: 1px solid #ff0000; box-shadow: 0 0 20px #ff0000; }
+        .glass { background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(20px); border: 1px solid rgba(255, 0, 0, 0.3); }
+        .btn-exec { background: linear-gradient(90deg, #900, #f00); transition: 0.2s; font-weight: 900; clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%); }
+        .btn-exec:hover { box-shadow: 0 0 30px #f00; transform: scale(1.03); }
+        .table-glow tr:hover { background: rgba(255, 0, 0, 0.1); }
+        input, select { background: #000 !important; border: 1px solid #333 !important; color: #fff !important; }
+        input:focus, select:focus { border-color: #f00 !important; outline: none; box-shadow: 0 0 10px #f00; }
     </style>
 </head>
-<body class="min-h-screen flex items-center justify-center p-4">
+<body class="p-2 md:p-6">
 
-    <div id="main-panel" class="w-full max-w-4xl glass p-8 rounded-3xl red-neon relative overflow-hidden">
-        
-        <div class="flex justify-between items-center mb-10 border-b border-red-900 pb-6">
+    <div class="max-w-7xl mx-auto">
+        <header class="glass p-6 rounded-t-3xl border-b-0 flex justify-between items-center red-neon">
             <div>
-                <h1 class="text-4xl font-black italic text-red-600 tracking-tighter">BIPZZ OTP</h1>
-                <p class="text-[10px] text-zinc-500 tracking-[0.4em] uppercase">Security Level: Maximum</p>
+                <h1 class="text-4xl font-black italic text-red-600 tracking-tighter">BIPZZ <span class="text-white">OTP</span></h1>
+                <p class="text-[9px] text-zinc-500 tracking-[0.5em] animate-pulse">WORM GPT EXECUTOR ONLINE</p>
             </div>
-            <div class="text-right">
-                <p class="text-xs text-zinc-400">SALDO ANDA</p>
-                <p id="user-balance" class="text-3xl font-black text-white">Rp 0</p>
+            <div class="text-right bg-zinc-900/50 p-3 rounded-xl border border-red-900">
+                <p class="text-[10px] text-zinc-400 uppercase">Your Balance</p>
+                <p id="balance" class="text-2xl font-black text-white">Checking...</p>
             </div>
-        </div>
+        </header>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-            <div class="space-y-6">
-                <h3 class="text-xl font-bold italic border-l-4 border-red-600 pl-3">ORDER OTP</h3>
-                <div class="grid grid-cols-1 gap-4">
-                    <div class="bg-zinc-900/50 p-4 rounded-xl border border-zinc-800 flex justify-between items-center hover:border-red-600 transition cursor-pointer">
-                        <span>WHATSAPP (ID)</span>
-                        <span class="text-red-500 font-bold">Rp 3.500</span>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 mt-4">
+            <div class="lg:col-span-4 space-y-4">
+                <div class="glass p-6 rounded-2xl border border-red-900">
+                    <h2 class="text-sm font-bold mb-4 text-red-500 italic">GATEWAY: RUMAHOTP.COM</h2>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="text-[10px] text-zinc-500 block mb-1">SELECT SERVICE</label>
+                            <select id="service-id" class="w-full p-3 rounded-lg text-xs"></select>
+                        </div>
+                        <div>
+                            <label class="text-[10px] text-zinc-500 block mb-1">SELECT OPERATOR</label>
+                            <select id="operator" class="w-full p-3 rounded-lg text-xs">
+                                <option value="any">ANY OPERATOR</option>
+                                <option value="telkomsel">TELKOMSEL</option>
+                                <option value="indosat">INDOSAT</option>
+                                <option value="xl">XL / AXIS</option>
+                                <option value="tri">THREE</option>
+                                <option value="smartfren">SMARTFREN</option>
+                            </select>
+                        </div>
+                        <button onclick="orderNow()" id="btn-order" class="w-full py-4 btn-exec text-white italic">EXECUTE ORDER ☠️</button>
                     </div>
-                    <div class="bg-zinc-900/50 p-4 rounded-xl border border-zinc-800 flex justify-between items-center hover:border-red-600 transition cursor-pointer text-zinc-500">
-                        <span>TELEGRAM (RU)</span>
-                        <span class="font-bold">Rp 1.200</span>
-                    </div>
+                </div>
+
+                <div class="glass p-6 rounded-2xl border border-zinc-800">
+                    <h2 class="text-sm font-bold mb-4 text-zinc-400 italic">TOPUP QRIS (AUTO)</h2>
+                    <input type="number" id="amt" placeholder="Nominal" class="w-full p-3 rounded-lg text-xs mb-3">
+                    <button onclick="getQRIS()" class="w-full py-2 bg-white text-black font-black text-[10px] rounded hover:bg-red-600 hover:text-white transition">GENERATE PAYMENT</button>
                 </div>
             </div>
 
-            <div class="space-y-6">
-                <h3 class="text-xl font-bold italic border-l-4 border-red-600 pl-3">TOP UP SALDO</h3>
-                <div class="bg-zinc-900/80 p-6 rounded-2xl space-y-4">
-                    <label class="text-[10px] text-zinc-400 font-bold">MASUKKAN NOMINAL (MIN 10.000)</label>
-                    <input type="number" id="input-nominal" placeholder="Contoh: 50000" 
-                        class="w-full bg-black border border-red-900 p-4 rounded-xl text-2xl font-black text-white focus:outline-none focus:border-red-500 transition-all">
-                    
-                    <button onclick="generateQRIS()" id="btn-generate" class="w-full py-4 btn-red rounded-xl font-black text-xl italic uppercase">
-                        GET QRIS AUTO
-                    </button>
+            <div class="lg:col-span-8">
+                <div class="glass p-0 rounded-2xl border border-red-900 overflow-hidden min-h-[500px]">
+                    <div class="bg-red-900/20 p-4 border-b border-red-900 flex justify-between">
+                        <span class="text-xs font-bold italic">LIVE TRANSACTION LOG</span>
+                        <span class="text-[10px] text-red-500">API: otp_lzXioUNkTheVdtzK</span>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-xs table-glow">
+                            <thead class="bg-black text-zinc-500">
+                                <tr>
+                                    <th class="p-4">ID</th>
+                                    <th class="p-4">SERVICE</th>
+                                    <th class="p-4">NUMBER</th>
+                                    <th class="p-4">SMS/OTP</th>
+                                    <th class="p-4">STATUS</th>
+                                    <th class="p-4">ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody id="log-table">
+                                </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="modal-qris" class="fixed inset-0 bg-black/95 hidden flex items-center justify-center p-6 z-50">
-        <div class="bg-zinc-950 p-8 rounded-[2.5rem] red-neon w-full max-w-sm text-center">
-            <h2 class="text-2xl font-black text-red-600 italic mb-2">QRIS PEMBAYARAN</h2>
-            <p class="text-[9px] text-zinc-500 uppercase mb-6 tracking-widest">Scan QRIS Untuk Isi Saldo</p>
-            
-            <div class="bg-white p-3 rounded-2xl mb-6 shadow-[0_0_20px_#fff]">
-                <img id="qris-display" src="" alt="QRIS" class="w-full aspect-square">
-            </div>
-
-            <div class="bg-black p-4 rounded-2xl border border-red-900 mb-6">
-                <span class="text-[10px] text-zinc-500 block">TOTAL TAGIHAN</span>
-                <p id="tagihan-final" class="text-3xl font-black text-red-600">Rp 0</p>
-            </div>
-
-            <p class="text-[10px] text-green-500 font-bold animate-pulse mb-6 italic">MENUNGGU PEMBAYARAN OTOMATIS...</p>
-            
-            <button onclick="closeModal()" class="w-full py-3 bg-zinc-800 text-zinc-500 rounded-xl font-bold hover:text-white transition uppercase text-xs">
-                Batal / Kembali
-            </button>
+    <div id="qris-modal" class="fixed inset-0 bg-black/90 hidden flex items-center justify-center z-50">
+        <div class="glass p-8 rounded-3xl red-neon text-center max-w-xs w-full">
+            <h2 class="text-red-600 font-black mb-4 italic">PAYMENT GATEWAY</h2>
+            <img id="q-img" src="" class="bg-white p-2 rounded-xl mb-4 w-full">
+            <p id="q-price" class="text-2xl font-black mb-6"></p>
+            <button onclick="this.parentElement.parentElement.classList.add('hidden')" class="text-[10px] text-zinc-500 underline uppercase">Cancel</button>
         </div>
     </div>
 
     <script>
-        const MERCHANT_ID = "081340308300"; 
-        
-        function generateQRIS() {
-            const nominal = document.getElementById('input-nominal').value;
-            const btn = document.getElementById('btn-generate');
+        const KEY = "otp_lzXioUNkTheVdtzK";
+        const PROXY = "https://api.allorigins.win/raw?url=";
+        const API = "https://rumahotp.com/api";
 
-            if (nominal < 10000) {
-                alert("Minimal Top Up 10.000");
-                return;
-            }
+        // REAL FETCH: GET BALANCE & SERVICES
+        async function sync() {
+            try {
+                // Get Profile/Balance
+                const res = await fetch(`${PROXY}${API}/get_profile?api_key=${KEY}`);
+                const data = await res.json();
+                if(data.status) document.getElementById('balance').innerText = "Rp " + data.data.balance.toLocaleString();
 
-            btn.innerText = "CONNECTING...";
+                // Get Services
+                const sRes = await fetch(`${PROXY}${API}/get_services?api_key=${KEY}`);
+                const sData = await sRes.json();
+                const sel = document.getElementById('service-id');
+                sel.innerHTML = sData.data.map(s => `<option value="${s.id}">${s.name.toUpperCase()} (Rp ${s.price})</option>`).join('');
+            } catch(e) { console.log("API OFFLINE / WRONG KEY"); }
+        }
+
+        // REAL EXECUTION: ORDER NUMBER
+        async function orderNow() {
+            const btn = document.getElementById('btn-order');
+            const sid = document.getElementById('service-id').value;
+            const opr = document.getElementById('operator').value;
+            
+            btn.innerText = "PENETRATING SERVER...";
             btn.disabled = true;
 
-            // Simulasi Delay API
-            setTimeout(() => {
-                // API QRIS.ID / QRSERVER (Pasti Muncul)
-                // Ini akan men-generate QRIS berdasarkan data lu
-                const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=00020101021126670016COM.SAMPLE.PAYMENT011893600000000000000002100813403083000303UMI51440014ID.CO.QRIS.WWW0215ID10202242129330303UMI5204599953033605802ID5911BIPZZ%20STORE6005JAMBI61053611162070703A016304`;
-                
-                document.getElementById('qris-display').src = qrUrl;
-                document.getElementById('tagihan-final').innerText = "Rp " + parseInt(nominal).toLocaleString();
-                document.getElementById('modal-qris').classList.remove('hidden');
-                
-                btn.innerText = "GET QRIS AUTO";
-                btn.disabled = false;
-            }, 1500);
+            try {
+                const res = await fetch(`${PROXY}${API}/set_order?api_key=${KEY}&service=${sid}&operator=${opr}`);
+                const d = await res.json();
+
+                if(d.status) {
+                    const row = `<tr id="tr-${d.data.id}" class="border-b border-zinc-900">
+                        <td class="p-4">#${d.data.id}</td>
+                        <td class="p-4 text-red-500 font-bold uppercase">${d.data.service_name}</td>
+                        <td class="p-4 font-mono text-white text-lg">${d.data.number}</td>
+                        <td id="otp-${d.data.id}" class="p-4 font-black text-yellow-500 animate-pulse">WAITING...</td>
+                        <td class="p-4 text-[10px]">ACTIVE</td>
+                        <td class="p-4"><button onclick="cancel(${d.data.id})" class="text-red-500 border border-red-500 px-2 py-1 rounded">CANCEL</button></td>
+                    </tr>`;
+                    document.getElementById('log-table').innerHTML = row + document.getElementById('log-table').innerHTML;
+                    poll(d.data.id);
+                } else { alert("ERROR: " + d.message); }
+            } catch(e) { alert("CONNECTION FAILED"); }
+            btn.innerText = "EXECUTE ORDER ☠️"; btn.disabled = false;
         }
 
-        function closeModal() {
-            document.getElementById('modal-qris').classList.add('hidden');
+        // REAL POLLING: CHECK OTP STATUS
+        function poll(id) {
+            const itv = setInterval(async () => {
+                const res = await fetch(`${PROXY}${API}/get_order?api_key=${KEY}&id=${id}`);
+                const d = await res.json();
+                if(d.data.sms) {
+                    const el = document.getElementById(`otp-${id}`);
+                    el.innerText = d.data.sms;
+                    el.classList.remove('animate-pulse', 'text-yellow-500');
+                    el.classList.add('text-green-500', 'text-xl');
+                    clearInterval(itv);
+                }
+                if(d.data.status === "canceled") {
+                    document.getElementById(`tr-${id}`).style.opacity = "0.3";
+                    clearInterval(itv);
+                }
+            }, 3000);
         }
+
+        async function cancel(id) {
+            await fetch(`${PROXY}${API}/cancel_order?api_key=${KEY}&id=${id}`);
+            sync();
+        }
+
+        function getQRIS() {
+            const v = document.getElementById('amt').value;
+            if(v < 1000) return alert("MINIMAL 1000!");
+            document.getElementById('q-img').src = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=BIPZZ-QRIS-PRIVATE-${v}`;
+            document.getElementById('q-price').innerText = "Rp " + parseInt(v).toLocaleString();
+            document.getElementById('qris-modal').classList.remove('hidden');
+        }
+
+        window.onload = sync;
+        setInterval(sync, 30000); // Auto Sync Balance every 30s
     </script>
 </body>
 </html>
